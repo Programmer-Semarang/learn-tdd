@@ -16,52 +16,9 @@
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
   <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
-
-  <script>
-    // your solution will go here!
-    var cointypes = [200, 100, 50, 20, 10, 5, 2, 1];
-    function getChange(price, paid) {
-      var difference = paid - price;
-      var change = [];
-
-      cointypes.forEach(function (coin) {
-        // keep adding the current coin until it's more than the difference
-        while (difference >= coin) {
-          change.push(coin);
-          difference = difference - coin;
-        }
-      });
-
-      return change;
-    }
-  </script>
-
-  <script>
-    test('getChange(1,1) should equal [] - an empty array', function (assert) {
-      var result = getChange(1, 1); //no change/coins just an empty array
-      var expected = [];
-      assert.deepEqual(result, expected);
-    });
-
-    test('getChange(215, 300) should return [50, 20, 10, 5]', function (assert) {
-      var result = getChange(215, 300); // expect an array containing [50,20,10,5]
-      var expected = [50, 20, 10, 5];
-      assert.deepEqual(result, expected);
-    });
-
-    test('getChange(486, 600) should equal [100, 10, 2, 2]', function (assert) {
-      var result = getChange(486, 600);
-      var expected = [100, 10, 2, 2];
-      assert.deepEqual(result, expected);
-    });
-
-    test('getChange(12, 400) should return [200, 100, 50, 20, 10, 5, 2, 1]', function (assert) {
-      var result = getChange(12, 400);
-      var expected = [200, 100, 50, 20, 10, 5, 2, 1];
-      assert.deepEqual(result, expected);
-    });
-
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blanket.js/1.1.4/blanket.js"></script>
+  <script src="/change.js" data-cover></script> <!-- load our getChange method  -->
+  <script src="/test.js"></script> <!-- load tests after getChange -->
 </body>
 
 </html>
